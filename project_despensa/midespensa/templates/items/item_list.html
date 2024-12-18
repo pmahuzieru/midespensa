@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Household Inventory</title>
+</head>
+<body>
+    <h1>Item List</h1>
+    <form method="get">
+        <label for="status">Filter by status:</label>
+        <select name="status" id="status">
+            <option value="">All</option>
+            <option value="buy">Buy</option>
+            <option value="low_stock">Low Stock</option>
+            <option value="out_of_stock">Out of Stock</option>
+            <option value="available">Available</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+
+    <table>
+        <thead>
+            <th>Item</th><th>Status</th>
+        </thead>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.purchase_status }}</td>
+            </tr>
+        {% empty %}
+            <tr><td>No</td><td>Data</td></tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
