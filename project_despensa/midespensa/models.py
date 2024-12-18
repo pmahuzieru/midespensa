@@ -22,7 +22,7 @@ class Category(TimeStampedModel):
 
 
 class Item(TimeStampedModel):
-
+    
     PURCHASE_STATUS_CHOICES = [
         ("buy", "Buy"),
         ("low_stock", "Low Stock"),
@@ -35,6 +35,9 @@ class Item(TimeStampedModel):
     purchase_status = models.CharField(
         max_length=20, choices=PURCHASE_STATUS_CHOICES, default="available"
     )
+    
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
